@@ -1,0 +1,46 @@
+﻿<Window x:Class="CA1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CA1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="292*"/>
+            <RowDefinition Height="127*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="191*"/>
+            <ColumnDefinition Width="199*"/>
+            <ColumnDefinition Width="402*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Team Members:" FontSize="20" Grid.Column="0" HorizontalAlignment="Center"/>
+        <ListBox Name="MemberLst" Width="180" Height="200"/>
+        
+        <Label Content="Member Tasks:" FontSize="20" Grid.Column="1" HorizontalAlignment="Center"/>
+        <ListBox Name="Tasklst" Grid.Column="1" Width="180" Height="200"/>
+
+        <Label Content="Task Details:" FontSize="20" Grid.Column="2"/>
+        <TextBlock Width="330" Height="200" Grid.Column="2"/>
+
+        <Button x:Name="RemoveMembtn" Content="Kick" Width="120" Height="20" VerticalAlignment="Bottom" Grid.Column="0" Click="RemoveMembtn_Click" />
+
+        <Button x:Name="RemoveTaskbtn" Content="Remove" Width="120" Height="20" VerticalAlignment="Bottom" Grid.Column="1" />
+
+        <Label Content="Add Member" HorizontalAlignment="Center" Grid.Row="1"/>
+        <TextBox x:Name="membertxtbx" Grid.Row="1" Width="170" Height="27" />
+
+        <Button Content="Add Member" Width="120" Height="20" VerticalAlignment="Bottom" Grid.Row="1" Click="Button_Click" />
+
+        <Label Content="Add Task" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+
+        <Label Content="Task Name:" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
+
+        <TextBox x:Name="TasknameTxtbx" Grid.Row="1" Width="100" Height="27" Grid.Column="1" HorizontalAlignment="Right"/>
+
+        <Button Name="TskButton" Content="Add Task" Width="120" Height="20" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="1" Click="TskButton_Click" />
+    </Grid>
+</Window>
