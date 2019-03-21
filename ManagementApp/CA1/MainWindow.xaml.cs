@@ -28,7 +28,7 @@ namespace CA1
 
         ObservableCollection<Member> members = new ObservableCollection<Member>();
 
-        
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             MemberLst.ItemsSource = members;
@@ -36,7 +36,7 @@ namespace CA1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(membertxtbx.Text != "")
+            if (membertxtbx.Text != "")
             {
                 Member added = new Member(membertxtbx.Text);
                 members.Add(added);
@@ -50,9 +50,9 @@ namespace CA1
         {
             if (MemberLst.SelectedItem != null)
             {
-                for(int i = 0; i < members.Count; i++)
+                for (int i = 0; i < members.Count; i++)
                 {
-                    if(MemberLst.SelectedItem.ToString() == members[i].Name)
+                    if (MemberLst.SelectedItem.ToString() == members[i].Name)
                     {
                         members.Remove(members[i]);
                     }
@@ -68,23 +68,83 @@ namespace CA1
 
         private void TskButton_Click(object sender, RoutedEventArgs e)
         {
-            if(MemberLst.SelectedItem != null)
+            if (MemberLst.SelectedItem != null)
             {
-                if(TasknameTxtbx.Text != null)
+                if (TasknameTxtbx.Text != null)
                 {
-                    Task added = new Task(TasknameTxtbx.Text, "");
-
-                    foreach(Member M in members)
+                    if (TaskDesctxtbx.Text != null)
                     {
-                        if(M.Name == MemberLst.SelectedItem.ToString())
-                        {
-                            M.AddTask(added);
 
-                            Tasklst.ItemsSource = M.tasks;
+                        Task added = new Task(TasknameTxtbx.Text, TaskDesctxtbx.Text);
+
+                        foreach (Member M in members)
+                        {
+                            if (M.Name == MemberLst.SelectedItem.ToString())
+                            {
+                                M.AddTask(added);
+
+                                Tasklst.ItemsSource = M.tasks;
+                            }
                         }
                     }
 
-                    
+
+                }
+            }
+        }
+
+        private void MemberLst_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            foreach (Member M in members)
+            {
+                if (M.Name == MemberLst.SelectedItem.ToString())
+                {
+                    Tasklst.ItemsSource = null;
+
+                    Tasklst.ItemsSource = M.tasks;
+                }
+            }
+
+
+        }
+
+        private void RemoveTaskbtn_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Member M in members)
+            {
+                if (M.Name == MemberLst.SelectedItem.ToString())
+                {
+                    for (int i = 0; i < M.tasks.Count; i++)
+                    {
+
+                        if (M.tasks[i].TaskName == Tasklst.SelectedItem.ToString())
+                        {
+                            M.tasks.Remove(M.tasks[i]);
+                        }
+
+                    }
+                }
+            }
+        }
+
+        private void Tasklst_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Tasklst.SelectedItem != null)
+            {
+                foreach (Member M in members)
+                {
+                    for (int i = 0; i < M.tasks.Count; i++)
+                    {
+                        if (Tasklst.SelectedItem.ToString() == M.tasks[i].TaskName)
+                        {
+                            TskDescriptionblk.Text = null;
+
+                            TskDescriptionblk.Text = M.tasks[i].Description;
+
+                        }
+                    }
+
                 }
             }
         }
