@@ -75,7 +75,7 @@ namespace CA1
                     if (TaskDesctxtbx.Text != null)
                     {
 
-                        Task added = new Task(TasknameTxtbx.Text, TaskDesctxtbx.Text);
+                        Task added = new Task(TasknameTxtbx.Text, TaskDesctxtbx.Text,(string)CatCombx.SelectionBoxItem, double.Parse(Datebx.Text));
 
                         foreach (Member M in members)
                         {
@@ -136,15 +136,19 @@ namespace CA1
                 {
                     for (int i = 0; i < M.tasks.Count; i++)
                     {
-                        if (Tasklst.SelectedItem.ToString() == M.tasks[i].TaskName)
+                        if ((Tasklst.SelectedItem as Task).TaskName == M.tasks[i].TaskName)
                         {
                             TskDescriptionblk.Text = null;
+                            TskCategoryBlk.Text = null;
+                            TskDateBlk.Text = null;
 
-                            TskDescriptionblk.Text = M.tasks[i].Description;
+                            TskDescriptionblk.Text = $"Description: {M.tasks[i].Description}";
+                            TskCategoryBlk.Text = $"Category: {M.tasks[i].AssignedCat}";
+                            TskDateBlk.Text = $"Due Date: {M.tasks[i].DueDate.ToShortDateString()}";
+
 
                         }
                     }
-
                 }
             }
         }

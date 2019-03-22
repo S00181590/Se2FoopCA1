@@ -26,6 +26,10 @@
         <Label Content="Task Details:" FontSize="20" Grid.Column="2"/>
         <TextBlock x:Name="TskDescriptionblk" Width="330" Height="100" Grid.Column="2" Margin="10,20,0,100"/>
 
+        <TextBlock x:Name="TskCategoryBlk" Width="150" Height="30" Grid.Column="2" Margin="40,100,0,0" HorizontalAlignment="Left"/>
+
+        <TextBlock x:Name="TskDateBlk" Width="200" Height="30" Grid.Column="2" Margin="200,100,0,0" HorizontalAlignment="Left"/>
+
         <Button x:Name="RemoveMembtn" Content="Kick" Width="120" Height="20" VerticalAlignment="Bottom" Grid.Column="0" Click="RemoveMembtn_Click" />
 
         <Button x:Name="RemoveTaskbtn" Content="Remove" Width="120" Height="20" VerticalAlignment="Bottom" Grid.Column="1" Click="RemoveTaskbtn_Click" />
@@ -44,7 +48,18 @@
         <Button Name="TskButton" Content="Add Task" Width="120" Height="20" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="1" Click="TskButton_Click" />
 
         <TextBox x:Name="TaskDesctxtbx" Text="Description here" Grid.Row="1" Grid.Column="2" Width="250" Height="50" Margin="10,5,100,50"/>
-        
-        
+
+        <Label Content="Category" Grid.Column="2" Grid.Row="1" Margin="30,60,10,10"/>
+        <ComboBox x:Name="CatCombx" Width="100" Height="20" Grid.Row="1" Grid.Column="2" Margin="30,60,10,0" HorizontalAlignment="Left" >
+            <ComboBoxItem IsSelected="True">Primary</ComboBoxItem>
+            <ComboBoxItem>Secondary</ComboBoxItem>
+            <ComboBoxItem>Optional</ComboBoxItem>
+        </ComboBox>
+
+        <TextBox x:Name="Datebx" Text="Due in how many days?" Width="200" Height="20" Grid.Column="2" Grid.Row="1"  Margin="150,60,10,0" HorizontalAlignment="Left"/>
+
+
+
+
     </Grid>
 </Window>

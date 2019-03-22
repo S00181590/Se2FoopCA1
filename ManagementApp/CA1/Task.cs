@@ -6,17 +6,29 @@ using System.Threading.Tasks;
 
 namespace CA1
 {
-    class Task
+    public class Task
     {
         public string TaskName { get; set; }
 
         public string Description { get; set; }
 
-        public Task(string name, string description)
+        public enum Category { Primary, Secondary, Optional }
+
+        public Category AssignedCat { get; set; }
+
+        public DateTime DueDate { get; set; }
+
+        public Task(string name, string description, string category, Double due)
         {
             TaskName = name;
 
             Description = description;
+
+            AssignedCat = (Category)Enum.Parse(typeof(Category),category);
+
+            DueDate = DateTime.Now;
+
+            DueDate = DueDate.AddDays(due);
 
         }
 
